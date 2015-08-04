@@ -1,0 +1,25 @@
+.container 
+	h2 My Todos 
+	form(role="form", name="todoform", ng-submit="main.addTodo()")
+		.row
+			.input-group
+				input.form-control(type="text", name="todoinput", ng-model="main.todo", ng-minlength="2",  placeholder="what to do now..." required)
+				span.input-group-btn
+					input.btn.btn-primary(type="submit", value="Add")
+		//- .row
+		//- 	.message(ng-message="todoform.todoinput.$error" role="alert")
+		//- 		div(ng-message="required") Put something in your list 
+		//- 		div(ng-message="minlength") Too short, need more than 2 characters
+
+	//- p.form-group(ng-repeat='todo in main.todos')
+	//- 	input.form-control(type="text", ng-model="todo")
+	div(ui-sortable, ng-model="main.todos")
+		p.input-group(ng-repeat='todo in main.todos', style="padding:5px 10px; cursor: move;")
+			input.form-control(type="text", ng-model="todo")
+			//- .button-group
+			span.input-group-btn
+				a.btn.btn-default(ng-href="#/" ng-click="main.removeTodo($index)", aria-label="Remove" )
+					span.glyphicon.glyphicon-remove-circle
+
+				//- a.btn.btn-default(ng-href="/#")
+				//- button.btn.btn-danger(ng-click="remove($index)", aria-label="Remove" value="X")
